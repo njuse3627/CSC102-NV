@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strings</title>
+    <link href="main.css" rel="stylesheet"
+</head>
+<body>
+
+    <!-- First name input -->
+    First Name: <input id="first"><br><br>
+
+    <!-- Last name input -->
+    Last Name: <input id="last"><br><br>
+
+    <!-- Zip code input -->
+    Zip Code: <input id="zip"><br><br>
+
+    <!-- Button -->
+    <button onclick="checkInfo()">Submit</button>
+
+    <!-- Message areas -->
+    <p id="warning" style="color:red;"></p>
+    <p id="secret" style="color:green;"></p>
+
+    <script>
+        function checkInfo() {
+
+            // Get values
+            let first = document.getElementById("first").value;
+            let last = document.getElementById("last").value;
+            let zip = document.getElementById("zip").value;
+
+            // Combine names
+            let fullName = first + " " + last;
+
+            // Clear old messages
+            document.getElementById("warning").innerHTML = "";
+            document.getElementById("secret").innerHTML = "";
+
+            // Check name length
+            if (fullName.length > 20) {
+                document.getElementById("warning").innerHTML =
+                    "Full name must be 20 characters or less.";
+                return;
+            }
+
+            // Check zip (must be 5 digits)
+            if (!/^[0-9]{5}$/.test(zip)) {
+                document.getElementById("warning").innerHTML =
+                    "Zip code must be exactly 5 digits.";
+                return;
+            }
+
+            // Show secret message
+            document.getElementById("secret").innerHTML =
+                "Secret Message: Hello";
+        }
+    </script>
+
+</body>
+
+    </html>
